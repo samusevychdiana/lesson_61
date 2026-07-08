@@ -33,13 +33,10 @@ h2 {
     display: block;
 }
 
-/* --- ХОВАЄМО СТАНДАРТНИЙ INPUT --- */
-input[type="checkbox"],
 input[type="radio"] {
     display: none;
 }
 
-/* --- ОБГОРТКА --- */
 .option {
     display: flex;
     align-items: center;
@@ -48,8 +45,6 @@ input[type="radio"] {
     margin-bottom: 10px;
 }
 
-/* --- КАСТОМНИЙ КВАДРАТ --- */
-.checkbox-custom,
 .radio-custom {
     width: 18px;
     height: 18px;
@@ -58,25 +53,10 @@ input[type="radio"] {
     transition: 0.2s;
 }
 
-/* КРУГ для radio */
 .radio-custom {
     border-radius: 50%;
 }
 
-/* --- ГАЛОЧКА (checkbox) --- */
-.checkbox-custom::before {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #2563eb;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 0.2s;
-}
-
-/* --- ТОЧКА (radio) --- */
 .radio-custom::before {
     content: "";
     position: absolute;
@@ -90,23 +70,66 @@ input[type="radio"] {
     transition: 0.2s;
 }
 
-/* --- СТАН CHECKED --- */
-input:checked+.checkbox-custom::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
 input:checked+.radio-custom::before {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* --- ФОКУС (доступність) --- */
-input:focus-visible+.checkbox-custom,
 input:focus-visible+.radio-custom {
     outline: 2px solid #2563eb;
     outline-offset: 2px;
 }
 
-/* КНОПКА */
+.toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+    background: #2563eb;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+.switch input:focus-visible + .slider {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
 button {
     margin-top: 20px;
     width: 100%;
